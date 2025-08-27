@@ -36,11 +36,8 @@ const menuItems: MenuItem[] = [
   },
   {
     title: "Follow-up",
+    url: "/follow-up",
     icon: MessageSquare,
-    subItems: [
-      { title: "Pré-venda", url: "/follow-up/pre-venda" },
-      { title: "Pós-venda", url: "/follow-up/pos-venda" },
-    ],
   },
   {
     title: "IA - FRIO x QUENTE",
