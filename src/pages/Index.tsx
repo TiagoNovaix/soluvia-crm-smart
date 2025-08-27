@@ -1,13 +1,59 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { CrmLayout } from "@/components/crm/CrmLayout";
+import { DashboardStats } from "@/components/crm/DashboardStats";
+import { ProductsSection } from "@/components/crm/ProductsSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <CrmLayout>
+      <div className="space-y-6">
+        {/* Page header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+            <p className="text-muted-foreground mt-1">
+              Visão geral do seu CRM
+            </p>
+          </div>
+        </div>
+
+        {/* Stats cards */}
+        <DashboardStats />
+
+        {/* Products section */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div className="xl:col-span-2">
+            <ProductsSection />
+          </div>
+          
+          {/* Additional space for future features */}
+          <div className="bg-card rounded-xl shadow-card border border-border p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Atividade Recente
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                <div className="w-2 h-2 bg-leads-active rounded-full" />
+                <p className="text-sm text-foreground">
+                  Lead João Silva em conversa sobre iPhone 15
+                </p>
+              </div>
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                <div className="w-2 h-2 bg-leads-hot rounded-full" />
+                <p className="text-sm text-foreground">
+                  Maria Santos - lead quente identificado
+                </p>
+              </div>
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                <div className="w-2 h-2 bg-leads-total rounded-full" />
+                <p className="text-sm text-foreground">
+                  Novo lead cadastrado - Pedro Costa
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </CrmLayout>
   );
 };
 
