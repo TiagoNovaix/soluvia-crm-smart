@@ -5,9 +5,16 @@ export interface Lead {
   lastContact: string;
   contactReason: string;
   source: 'WhatsApp' | 'Balcão' | 'Instagram';
-  status: 'cold' | 'talking' | 'hot';
+  status: 'cold' | 'talking' | 'hot' | 'closed';
   createdAt: string;
   history: ContactHistory[];
+  saleInfo?: {
+    produto: string;
+    valor: number;
+    vendedor: string;
+    dataFechamento: Date;
+    observacoes?: string;
+  };
 }
 
 export interface ContactHistory {

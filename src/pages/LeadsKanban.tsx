@@ -9,7 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { CrmLayout } from '@/components/crm/CrmLayout';
 import { KanbanColumn } from '@/components/crm/KanbanColumn';
 import { LeadDetailModal } from '@/components/crm/LeadDetailModal';
+import { SaleModal } from '@/components/crm/SaleModal';
 import { mockLeads, Lead } from '@/types/leads';
+import { useToast } from "@/hooks/use-toast";
 
 export default function LeadsKanban() {
   const [leads, setLeads] = useState<Lead[]>(mockLeads);
@@ -17,6 +19,9 @@ export default function LeadsKanban() {
   const [sourceFilter, setSourceFilter] = useState<string>('all');
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [saleModalOpen, setSaleModalOpen] = useState(false);
+  const [leadToClose, setLeadToClose] = useState<Lead | null>(null);
+  const { toast } = useToast();
 
   // Filter leads based on search and source filter
   const filteredLeads = leads.filter(lead => {
@@ -31,10 +36,20 @@ export default function LeadsKanban() {
     cold: filteredLeads.filter(lead => lead.status === 'cold'),
     talking: filteredLeads.filter(lead => lead.status === 'talking'),
     hot: filteredLeads.filter(lead => lead.status === 'hot'),
+    closed: filteredLeads.filter(lead => lead.status === 'closed'),
   };
 
   // Handle drag and drop
-  const handleDropLead = (leadId: string, newStatus: 'cold' | 'talking' | 'hot') => {
+  const handleDropLead = (leadId: string, newStatus: 'cold' | 'talking' | 'hot' | 'closed') => {
+    if (newStatus === 'closed') {
+      const lead = leads.find(l => l.id === leadId);
+      if (lead) {
+        setLeadToClose(lead);
+        setSaleModalOpen(true);
+        return;
+      }
+    }
+    
     setLeads(prev => prev.map(lead => 
       lead.id === leadId ? { ...lead, status: newStatus } : lead
     ));
@@ -56,6 +71,37 @@ export default function LeadsKanban() {
     if (selectedLead?.id === leadId) {
       setSelectedLead(prev => prev ? { ...prev, ...updates } : null);
     }
+  };
+
+  // Handle sale confirmation
+  const handleConfirmSale = (saleData: {
+    produto: string;
+    valor: number;
+    vendedor: string;
+    observacoes?: string;
+  }) => {
+    if (!leadToClose) return;
+
+    const updatedLead: Lead = {
+      ...leadToClose,
+      status: 'closed',
+      saleInfo: {
+        ...saleData,
+        dataFechamento: new Date()
+      }
+    };
+
+    setLeads(prev => prev.map(lead => 
+      lead.id === leadToClose.id ? updatedLead : lead
+    ));
+
+    setSaleModalOpen(false);
+    setLeadToClose(null);
+    
+    toast({
+      title: "Venda registrada!",
+      description: `${saleData.produto} vendido para ${leadToClose.name} por R$ ${saleData.valor.toFixed(2)}`,
+    });
   };
 
   const totalLeads = filteredLeads.length;
@@ -115,7 +161,7 @@ export default function LeadsKanban() {
 
         {/* Kanban Board */}
         <DndProvider backend={HTML5Backend}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 min-h-[600px]">
             <KanbanColumn
               title="Frio"
               status="cold"
@@ -140,6 +186,14 @@ export default function LeadsKanban() {
               onLeadClick={handleLeadClick}
               color="orange"
             />
+            <KanbanColumn
+              title="Fechados"
+              status="closed"
+              leads={leadsByStatus.closed}
+              onDropLead={handleDropLead}
+              onLeadClick={handleLeadClick}
+              color="green"
+            />
           </div>
         </DndProvider>
 
@@ -153,6 +207,16 @@ export default function LeadsKanban() {
           }}
           onUpdateLead={handleUpdateLead}
         />
+
+        {/* Sale Registration Modal */}
+        {leadToClose && (
+          <SaleModal
+            isOpen={saleModalOpen}
+            onClose={() => setSaleModalOpen(false)}
+            lead={leadToClose}
+            onConfirmSale={handleConfirmSale}
+          />
+        )}
       </div>
     </CrmLayout>
   );

@@ -5,9 +5,9 @@ import { cn } from '@/lib/utils';
 
 interface KanbanColumnProps {
   title: string;
-  status: 'cold' | 'talking' | 'hot';
+  status: 'cold' | 'talking' | 'hot' | 'closed';
   leads: Lead[];
-  onDropLead: (leadId: string, newStatus: 'cold' | 'talking' | 'hot') => void;
+  onDropLead: (leadId: string, newStatus: 'cold' | 'talking' | 'hot' | 'closed') => void;
   onLeadClick: (lead: Lead) => void;
   color: string;
 }
@@ -15,13 +15,15 @@ interface KanbanColumnProps {
 const statusLabels = {
   cold: 'Frio',
   talking: 'Em Conversa', 
-  hot: 'Quente'
+  hot: 'Quente',
+  closed: 'Fechados'
 };
 
 const headerColors = {
   cold: 'bg-purple-500 text-white',
   talking: 'bg-green-500 text-white',
-  hot: 'bg-orange-500 text-white'
+  hot: 'bg-orange-500 text-white',
+  closed: 'bg-leads-closed text-white'
 };
 
 export function KanbanColumn({ 

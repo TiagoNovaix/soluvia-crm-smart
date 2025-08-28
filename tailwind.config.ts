@@ -56,7 +56,16 @@ export default {
 					total: 'hsl(var(--leads-total))',
 					cold: 'hsl(var(--leads-cold))',
 					active: 'hsl(var(--leads-active))',
-					hot: 'hsl(var(--leads-hot))'
+					hot: 'hsl(var(--leads-hot))',
+					closed: 'hsl(var(--leads-closed))'
+				},
+				whatsapp: {
+					DEFAULT: 'hsl(var(--whatsapp))',
+					foreground: 'hsl(var(--whatsapp-foreground))'
+				},
+				config: {
+					DEFAULT: 'hsl(var(--config))',
+					foreground: 'hsl(var(--config-foreground))'
 				},
 				success: {
 					DEFAULT: 'hsl(var(--success))',

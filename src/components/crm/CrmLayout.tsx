@@ -8,7 +8,9 @@ import {
   ChevronDown,
   ChevronRight,
   Menu,
-  X
+  X,
+  Building,
+  MessageCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -43,6 +45,19 @@ const menuItems: MenuItem[] = [
     title: "IA - FRIO x QUENTE",
     url: "/ia-leads",
     icon: TrendingUp,
+  },
+  {
+    title: "Configurações da Empresa",
+    icon: Building,
+    subItems: [
+      { title: "Dados da Empresa", url: "/configuracoes/empresa" },
+      { title: "Metas", url: "/configuracoes/metas" }
+    ]
+  },
+  {
+    title: "WhatsApp Business",
+    url: "/whatsapp-business",
+    icon: MessageCircle,
   },
 ];
 
