@@ -21,7 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/clientes" element={<div />} />
+          <Route path="/clientes" element={<FollowUp />} />
           <Route path="/follow-up" element={<FollowUp />} />
           <Route path="/ia-leads" element={<LeadsKanban />} />
           <Route path="/configuracoes/empresa" element={<CompanySettings />} />
