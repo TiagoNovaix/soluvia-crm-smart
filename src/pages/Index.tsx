@@ -20,13 +20,13 @@ const Index = () => {
         <DashboardStats />
 
         {/* Products section */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          <div className="xl:col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <div className="lg:col-span-3">
             <ProductsSection />
           </div>
           
-          {/* Additional space for future features */}
-          <div className="bg-card rounded-xl shadow-card border border-border p-6">
+          {/* Recent Activity - 40% width */}
+          <div className="lg:col-span-2 bg-card rounded-xl shadow-card border border-border p-6">
             <h3 className="text-lg font-semibold text-foreground mb-4">
               Atividade Recente
             </h3>

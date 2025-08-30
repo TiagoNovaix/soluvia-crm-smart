@@ -161,7 +161,7 @@ export default function LeadsKanban() {
 
         {/* Kanban Board */}
         <DndProvider backend={HTML5Backend}>
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 min-h-[600px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[600px] w-full">
             <KanbanColumn
               title="Frio"
               status="cold"

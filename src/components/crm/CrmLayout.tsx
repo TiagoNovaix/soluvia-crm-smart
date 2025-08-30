@@ -79,7 +79,7 @@ export function CrmLayout({ children }: CrmLayoutProps) {
     subItems?.some(item => location.pathname === item.url) || false;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex min-h-screen bg-background">
       {/* Mobile backdrop */}
       {sidebarOpen && (
         <div 
@@ -90,7 +90,7 @@ export function CrmLayout({ children }: CrmLayoutProps) {
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed left-0 top-0 z-50 h-full w-64 bg-card border-r border-border transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+        "fixed left-0 top-0 z-50 h-full w-64 bg-card border-r border-border transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:relative lg:z-auto",
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         {/* Header */}
@@ -171,8 +171,8 @@ export function CrmLayout({ children }: CrmLayoutProps) {
         </nav>
       </aside>
 
-      {/* Main content */}
-      <div className="lg:ml-64">
+      {/* Main content - USES FULL WIDTH */}
+      <div className="flex-1 overflow-hidden">
         {/* Top bar */}
         <header className="h-16 bg-card border-b border-border flex items-center px-4 lg:px-6">
           <button
@@ -185,7 +185,7 @@ export function CrmLayout({ children }: CrmLayoutProps) {
         </header>
 
         {/* Page content */}
-        <main className="p-4 lg:p-6">
+        <main className="p-6 w-full">
           {children}
         </main>
       </div>

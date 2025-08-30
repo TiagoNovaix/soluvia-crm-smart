@@ -121,7 +121,7 @@ export default function FollowUp() {
           </TabsList>
 
           <TabsContent value="pre-sale" className="space-y-4">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               <PreSaleFollowUpColumn
                 title="1 Hora"
                 type="1H"
@@ -150,7 +150,7 @@ export default function FollowUp() {
           </TabsContent>
 
           <TabsContent value="post-sale" className="space-y-4">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
               <PostSaleFollowUpColumn
                 title="24 Horas"
                 type="24H"

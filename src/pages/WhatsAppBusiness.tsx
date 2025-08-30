@@ -86,7 +86,7 @@ export default function WhatsAppBusinessPage() {
           </Badge>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
           {/* Connection Setup */}
           <Card>
             <CardHeader>
