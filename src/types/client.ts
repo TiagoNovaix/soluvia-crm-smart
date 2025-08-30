@@ -1,3 +1,4 @@
+
 export interface Client {
   id: string;
   name: string;
@@ -24,273 +25,242 @@ export interface ClientHistory {
 export const mockClients: Client[] = [
   {
     id: '1',
-    name: 'João Silva',
-    email: 'joao.silva@email.com',
-    phone: '(11) 99999-1234',
+    name: 'Ana Clara Santos',
+    email: 'ana.santos@gmail.com',
+    phone: '(11) 99876-5432',
     status: 'active',
     source: 'WhatsApp',
     createdAt: '2024-01-10',
-    lastContact: '2024-01-15 14:30',
-    totalPurchases: 2850.00,
-    history: [
-      {
-        id: '1',
-        date: '2024-01-15 14:30',
-        type: 'purchase',
-        description: 'Compra iPhone 15 Pro',
-        outcome: 'Venda finalizada',
-        value: 2850.00
-      },
-      {
-        id: '2',
-        date: '2024-01-10 09:15',
-        type: 'call',
-        description: 'Primeiro contato para orçamento',
-        outcome: 'Demonstrou interesse'
-      }
-    ]
-  },
-  {
-    id: '2',
-    name: 'Maria Santos',
-    email: 'maria.santos@gmail.com',
-    phone: '(11) 98888-5678',
-    status: 'lead',
-    source: 'Instagram',
-    createdAt: '2024-01-16',
-    lastContact: '2024-01-16 10:15',
-    totalPurchases: 0,
-    history: [
-      {
-        id: '3',
-        date: '2024-01-16 10:15',
-        type: 'message',
-        description: 'Interesse em capinha Samsung S24',
-        outcome: 'Enviado catálogo'
-      }
-    ]
-  },
-  {
-    id: '3',
-    name: 'Pedro Costa',
-    email: 'pedro.costa@outlook.com',
-    phone: '(11) 97777-9012',
-    status: 'active',
-    source: 'Balcão',
-    createdAt: '2024-01-14',
-    lastContact: '2024-01-16 16:45',
-    totalPurchases: 1200.00,
-    history: [
-      {
-        id: '4',
-        date: '2024-01-16 16:45',
-        type: 'support',
-        description: 'Dúvida sobre garantia',
-        outcome: 'Esclarecido, cliente satisfeito'
-      },
-      {
-        id: '5',
-        date: '2024-01-14 11:20',
-        type: 'purchase',
-        description: 'Compra AirPods Pro',
-        outcome: 'Venda finalizada',
-        value: 1200.00
-      }
-    ]
-  },
-  {
-    id: '4',
-    name: 'Ana Oliveira',
-    email: 'ana.oliveira@yahoo.com',
-    phone: '(11) 96666-3456',
-    status: 'inactive',
-    source: 'Site',
-    createdAt: '2024-01-10',
-    lastContact: '2024-01-14 09:30',
-    totalPurchases: 450.00,
-    history: [
-      {
-        id: '6',
-        date: '2024-01-14 09:30',
-        type: 'message',
-        description: 'Pergunta sobre frete',
-        outcome: 'Informações enviadas'
-      },
-      {
-        id: '7',
-        date: '2024-01-10 15:00',
-        type: 'purchase',
-        description: 'Compra cabo USB-C',
-        outcome: 'Venda finalizada',
-        value: 450.00
-      }
-    ]
-  },
-  {
-    id: '5',
-    name: 'Carlos Ferreira',
-    email: 'carlos.ferreira@empresa.com',
-    phone: '(11) 95555-7890',
-    status: 'active',
-    source: 'Indicação',
-    createdAt: '2024-01-12',
-    lastContact: '2024-01-16 13:20',
+    lastContact: '2024-01-25',
     totalPurchases: 3200.00,
     history: [
       {
-        id: '8',
-        date: '2024-01-16 13:20',
-        type: 'visit',
-        description: 'Visita para reparo de iPhone',
-        outcome: 'Reparo em andamento'
-      },
-      {
-        id: '9',
-        date: '2024-01-12 10:30',
+        id: '1',
+        date: '2024-01-25',
         type: 'purchase',
-        description: 'Compra Galaxy S24 Ultra',
+        description: 'Compra iPhone 15 Pro Max',
         outcome: 'Venda finalizada',
         value: 3200.00
       }
     ]
   },
   {
-    id: '6',
-    name: 'Fernanda Lima',
-    email: 'fernanda.lima@hotmail.com',
-    phone: '(11) 94444-2468',
+    id: '2',
+    name: 'Carlos Eduardo Silva',
+    email: 'carlos.silva@outlook.com',
+    phone: '(11) 98765-4321',
     status: 'lead',
-    source: 'WhatsApp',
-    createdAt: '2024-01-13',
-    lastContact: '2024-01-15 18:00',
+    source: 'Instagram',
+    createdAt: '2024-01-20',
+    lastContact: '2024-01-24',
     totalPurchases: 0,
     history: [
       {
-        id: '10',
-        date: '2024-01-15 18:00',
+        id: '2',
+        date: '2024-01-24',
+        type: 'message',
+        description: 'Interesse em Galaxy S24',
+        outcome: 'Aguardando resposta'
+      }
+    ]
+  },
+  {
+    id: '3',
+    name: 'Mariana Costa Lima',
+    email: 'mariana.lima@yahoo.com',
+    phone: '(11) 97654-3210',
+    status: 'active',
+    source: 'Balcão',
+    createdAt: '2024-01-15',
+    lastContact: '2024-01-23',
+    totalPurchases: 1500.00,
+    history: [
+      {
+        id: '3',
+        date: '2024-01-23',
+        type: 'support',
+        description: 'Dúvida sobre garantia AirPods',
+        outcome: 'Problema resolvido'
+      }
+    ]
+  },
+  {
+    id: '4',
+    name: 'Roberto Ferreira',
+    email: 'roberto.ferreira@empresa.com',
+    phone: '(11) 96543-2109',
+    status: 'inactive',
+    source: 'Site',
+    createdAt: '2024-01-05',
+    lastContact: '2024-01-18',
+    totalPurchases: 450.00,
+    history: [
+      {
+        id: '4',
+        date: '2024-01-18',
         type: 'call',
-        description: 'Orçamento Galaxy Z Flip',
+        description: 'Tentativa de reativação',
+        outcome: 'Não atendeu'
+      }
+    ]
+  },
+  {
+    id: '5',
+    name: 'Juliana Oliveira',
+    email: 'juliana.oliveira@hotmail.com',
+    phone: '(11) 95432-1098',
+    status: 'active',
+    source: 'Indicação',
+    createdAt: '2024-01-12',
+    lastContact: '2024-01-22',
+    totalPurchases: 2800.00,
+    history: [
+      {
+        id: '5',
+        date: '2024-01-22',
+        type: 'purchase',
+        description: 'MacBook Air M2',
+        outcome: 'Venda concluída',
+        value: 2800.00
+      }
+    ]
+  },
+  {
+    id: '6',
+    name: 'Pedro Henrique Moura',
+    email: 'pedro.moura@gmail.com',
+    phone: '(11) 94321-0987',
+    status: 'lead',
+    source: 'WhatsApp',
+    createdAt: '2024-01-18',
+    lastContact: '2024-01-21',
+    totalPurchases: 0,
+    history: [
+      {
+        id: '6',
+        date: '2024-01-21',
+        type: 'message',
+        description: 'Orçamento smartwatch',
         outcome: 'Em negociação'
       }
     ]
   },
   {
     id: '7',
-    name: 'Roberto Mendes',
-    email: 'roberto.mendes@gmail.com',
-    phone: '(11) 93333-1111',
+    name: 'Fernanda Almeida',
+    email: 'fernanda.almeida@email.com',
+    phone: '(11) 93210-9876',
     status: 'active',
     source: 'Balcão',
     createdAt: '2024-01-08',
-    lastContact: '2024-01-15 12:00',
-    totalPurchases: 1750.00,
+    lastContact: '2024-01-20',
+    totalPurchases: 1200.00,
     history: [
       {
-        id: '11',
-        date: '2024-01-15 12:00',
-        type: 'purchase',
-        description: 'Compra smartwatch Apple',
-        outcome: 'Venda finalizada',
-        value: 1750.00
+        id: '7',
+        date: '2024-01-20',
+        type: 'visit',
+        description: 'Reparo de tela iPhone',
+        outcome: 'Serviço realizado'
       }
     ]
   },
   {
     id: '8',
-    name: 'Luciana Torres',
-    email: 'luciana.torres@email.com',
-    phone: '(11) 92222-5555',
+    name: 'Lucas Rodrigues',
+    email: 'lucas.rodrigues@tech.com',
+    phone: '(11) 92109-8765',
     status: 'inactive',
     source: 'Instagram',
-    createdAt: '2024-01-05',
-    lastContact: '2024-01-12 16:30',
+    createdAt: '2024-01-03',
+    lastContact: '2024-01-15',
     totalPurchases: 89.90,
     history: [
       {
-        id: '12',
-        date: '2024-01-12 16:30',
+        id: '8',
+        date: '2024-01-15',
         type: 'message',
-        description: 'Dúvida sobre produto',
-        outcome: 'Não respondeu mais'
+        description: 'Não respondeu follow-up',
+        outcome: 'Sem retorno'
       }
     ]
   },
   {
     id: '9',
-    name: 'Eduardo Santos',
-    email: 'eduardo.santos@empresa.com.br',
-    phone: '(11) 91111-9999',
+    name: 'Camila Souza',
+    email: 'camila.souza@corp.com.br',
+    phone: '(11) 91098-7654',
     status: 'active',
     source: 'Site',
-    createdAt: '2024-01-09',
-    lastContact: '2024-01-16 11:45',
-    totalPurchases: 4500.00,
+    createdAt: '2024-01-14',
+    lastContact: '2024-01-19',
+    totalPurchases: 5200.00,
     history: [
       {
-        id: '13',
-        date: '2024-01-16 11:45',
+        id: '9',
+        date: '2024-01-19',
         type: 'purchase',
-        description: 'Compra MacBook Air',
+        description: 'iPad Pro + Apple Pencil',
         outcome: 'Venda finalizada',
-        value: 4500.00
+        value: 5200.00
       }
     ]
   },
   {
     id: '10',
-    name: 'Patricia Alves',
-    email: 'patricia.alves@outlook.com',
-    phone: '(11) 90000-7777',
+    name: 'Daniel Barbosa',
+    email: 'daniel.barbosa@outlook.com',
+    phone: '(11) 90987-6543',
     status: 'lead',
     source: 'Indicação',
-    createdAt: '2024-01-16',
-    lastContact: '2024-01-16 09:00',
+    createdAt: '2024-01-22',
+    lastContact: '2024-01-24',
     totalPurchases: 0,
     history: [
       {
-        id: '14',
-        date: '2024-01-16 09:00',
+        id: '10',
+        date: '2024-01-24',
         type: 'call',
-        description: 'Primeiro contato via indicação',
-        outcome: 'Agendada visita'
+        description: 'Primeiro contato',
+        outcome: 'Demonstrou interesse'
       }
     ]
   },
   {
     id: '11',
-    name: 'Marcos Silva',
-    email: 'marcos.silva@gmail.com',
-    phone: '(11) 98765-4321',
+    name: 'Beatriz Cardoso',
+    email: 'beatriz.cardoso@gmail.com',
+    phone: '(11) 98876-5431',
     status: 'active',
     source: 'WhatsApp',
     createdAt: '2024-01-11',
-    lastContact: '2024-01-15 15:20',
-    totalPurchases: 850.00,
+    lastContact: '2024-01-18',
+    totalPurchases: 950.00,
     history: [
       {
-        id: '15',
-        date: '2024-01-15 15:20',
+        id: '11',
+        date: '2024-01-18',
         type: 'purchase',
-        description: 'Compra case iPhone',
-        outcome: 'Venda finalizada',
-        value: 850.00
+        description: 'Capinha + película iPhone',
+        outcome: 'Venda concluída',
+        value: 950.00
       }
     ]
   },
   {
     id: '12',
-    name: 'Silvia Rodriguez',
-    email: 'silvia.rodriguez@email.com',
-    phone: '(11) 97654-3210',
+    name: 'Thiago Mendes',
+    email: 'thiago.mendes@empresa.net',
+    phone: '(11) 97765-4320',
     status: 'inactive',
     source: 'Balcão',
     createdAt: '2024-01-07',
-    lastContact: '2024-01-10 14:00',
-    totalPurchases: 120.00,
+    lastContact: '2024-01-16',
+    totalPurchases: 320.00,
     history: [
       {
-        id: '16',
-        date: '2024-01-10 14:00',
+        id: '12',
+        date: '2024-01-16',
         type: 'visit',
         description: 'Visitou loja, não comprou',
         outcome: 'Sem interesse no momento'
