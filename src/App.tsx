@@ -9,6 +9,7 @@ import FollowUp from "./pages/FollowUp";
 import CompanySettings from "./pages/CompanySettings";
 import GoalsSettings from "./pages/GoalsSettings";
 import WhatsAppBusiness from "./pages/WhatsAppBusiness";
+import ClientsManagement from "./pages/ClientsManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,7 +22,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/clientes" element={<FollowUp />} />
+          <Route path="/clientes" element={<ClientsManagement />} />
           <Route path="/follow-up" element={<FollowUp />} />
           <Route path="/ia-leads" element={<LeadsKanban />} />
           <Route path="/configuracoes/empresa" element={<CompanySettings />} />
