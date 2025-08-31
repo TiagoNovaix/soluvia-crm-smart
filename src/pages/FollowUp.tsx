@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CrmLayout } from '@/components/crm/CrmLayout';
 import { PreSaleFollowUpColumn, PostSaleFollowUpColumn } from '@/components/crm/FollowUpColumn';
 import { mockPreSaleFollowUps, mockPostSaleFollowUps, PreSaleFollowUp, PostSaleFollowUp } from '@/types/followup';
 import { useToast } from "@/hooks/use-toast";
@@ -66,8 +65,7 @@ export default function FollowUp() {
   const overduePostSale = postSaleFollowUps.filter(f => f.status === 'overdue' && !f.completed).length;
 
   return (
-    <CrmLayout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -173,6 +171,5 @@ export default function FollowUp() {
           </TabsContent>
         </Tabs>
       </div>
-    </CrmLayout>
   );
 }

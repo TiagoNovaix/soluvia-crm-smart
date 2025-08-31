@@ -1,11 +1,9 @@
-import { CrmLayout } from "@/components/crm/CrmLayout";
 import { DashboardStats } from "@/components/crm/DashboardStats";
 import { ProductsSection } from "@/components/crm/ProductsSection";
 
 const Index = () => {
   return (
-    <CrmLayout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         {/* Page header */}
         <div className="flex items-center justify-between">
           <div>
@@ -53,7 +51,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </CrmLayout>
   );
 };
 

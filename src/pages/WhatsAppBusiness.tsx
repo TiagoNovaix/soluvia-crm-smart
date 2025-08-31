@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import { CrmLayout } from '@/components/crm/CrmLayout';
 import { mockWhatsAppConfig, WhatsAppConfig } from '@/types/goals';
 import { useToast } from "@/hooks/use-toast";
 
@@ -55,8 +54,7 @@ export default function WhatsAppBusinessPage() {
   const isConnected = config.status === 'connected';
 
   return (
-    <CrmLayout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -244,6 +242,5 @@ export default function WhatsAppBusinessPage() {
           </CardContent>
         </Card>
       </div>
-    </CrmLayout>
   );
 }

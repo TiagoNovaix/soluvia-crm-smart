@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { CrmLayout } from '@/components/crm/CrmLayout';
 import { KanbanColumn } from '@/components/crm/KanbanColumn';
 import { LeadDetailModal } from '@/components/crm/LeadDetailModal';
 import { SaleModal } from '@/components/crm/SaleModal';
@@ -107,8 +106,7 @@ export default function LeadsKanban() {
   const totalLeads = filteredLeads.length;
 
   return (
-    <CrmLayout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -218,6 +216,5 @@ export default function LeadsKanban() {
           />
         )}
       </div>
-    </CrmLayout>
   );
 }
