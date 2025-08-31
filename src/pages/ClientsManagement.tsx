@@ -16,12 +16,14 @@ import {
 } from "@/components/ui/pagination";
 import { 
   Search, 
-  Mail, 
   Plus, 
   ArrowUpDown, 
   Trash2, 
   Download,
-  Filter
+  Filter,
+  Edit,
+  Phone,
+  Calendar
 } from 'lucide-react';
 import { Client, mockClients } from '@/types/client';
 import { ClientDetailModal } from '@/components/crm/ClientDetailModal';
@@ -57,6 +59,7 @@ export default function ClientsManagement() {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [editingClient, setEditingClient] = useState<Client | null>(null);
 
   const itemsPerPage = 10;
 
@@ -176,22 +179,28 @@ export default function ClientsManagement() {
     });
   };
 
-  const handleSendMessage = () => {
-    if (selectedClients.length === 0) {
-      toast({
-        title: "Nenhum cliente selecionado",
-        description: "Selecione pelo menos um cliente para enviar mensagens.",
-        variant: "destructive"
-      });
-      return;
-    }
+  const handleEditClient = (updatedClientData: Omit<Client, 'id' | 'createdAt' | 'lastContact' | 'totalPurchases' | 'history'>) => {
+    if (!editingClient) return;
+    
+    const updatedClient = {
+      ...editingClient,
+      ...updatedClientData
+    };
+
+    setClients(prev =>
+      prev.map(client =>
+        client.id === editingClient.id ? updatedClient : client
+      )
+    );
 
     toast({
-      title: "Mensagens enviadas",
-      description: `Mensagens enviadas para ${selectedClients.length} cliente(s).`,
+      title: "Cliente atualizado",
+      description: `${updatedClient.name} foi atualizado com sucesso.`,
     });
-    setSelectedClients([]);
+
+    setEditingClient(null);
   };
+
 
   const handleExport = () => {
     if (selectedClients.length === 0) {
@@ -261,16 +270,6 @@ export default function ClientsManagement() {
         
         <div className="flex gap-2">
           <Button
-            onClick={handleSendMessage}
-            variant="outline"
-            disabled={selectedClients.length === 0}
-            className="flex items-center gap-2"
-          >
-            <Mail className="h-4 w-4" />
-            Enviar Mensagem
-          </Button>
-          
-          <Button
             onClick={handleExport}
             variant="outline"
             disabled={selectedClients.length === 0}
@@ -326,8 +325,8 @@ export default function ClientsManagement() {
         </Button>
       </div>
 
-      {/* Table */}
-      <div className="border rounded-lg">
+      {/* Table - Desktop */}
+      <div className="hidden md:block border rounded-lg">
         <Table>
           <TableHeader>
             <TableRow>
@@ -387,6 +386,7 @@ export default function ClientsManagement() {
                   <ArrowUpDown className="h-4 w-4" />
                 </Button>
               </TableHead>
+              <TableHead>Ações</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -423,10 +423,88 @@ export default function ClientsManagement() {
                 <TableCell className="text-muted-foreground text-sm">
                   {new Date(client.lastContact).toLocaleDateString('pt-BR')}
                 </TableCell>
+                <TableCell>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setEditingClient(client);
+                      setIsFormModalOpen(true);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <Edit className="h-3 w-3" />
+                    Editar
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+
+        {currentClients.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">
+              {searchTerm || filter !== 'all' 
+                ? 'Nenhum cliente encontrado com os filtros aplicados.'
+                : 'Nenhum cliente cadastrado ainda.'
+              }
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Cards - Mobile */}
+      <div className="md:hidden space-y-4">
+        {currentClients.map((client) => (
+          <div key={client.id} className="bg-white border rounded-lg p-4 space-y-3">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-3">
+                <Checkbox
+                  checked={selectedClients.includes(client.id)}
+                  onCheckedChange={() => handleSelectClient(client.id)}
+                />
+                <div>
+                  <button
+                    onClick={() => {
+                      setSelectedClient(client);
+                      setIsDetailModalOpen(true);
+                    }}
+                    className="text-left hover:text-primary underline-offset-4 hover:underline font-medium text-base"
+                  >
+                    {client.name}
+                  </button>
+                  <Badge className={`${statusColors[client.status]} text-xs mt-1`}>
+                    {statusLabels[client.status]}
+                  </Badge>
+                </div>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setEditingClient(client);
+                  setIsFormModalOpen(true);
+                }}
+                className="flex items-center gap-1"
+              >
+                <Edit className="h-3 w-3" />
+                Editar
+              </Button>
+            </div>
+            
+            <div className="space-y-2 text-sm">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Phone className="h-4 w-4" />
+                <span className="font-mono">{client.phone}</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Calendar className="h-4 w-4" />
+                <span>Último contato: {new Date(client.lastContact).toLocaleDateString('pt-BR')}</span>
+              </div>
+            </div>
+          </div>
+        ))}
 
         {currentClients.length === 0 && (
           <div className="text-center py-12">
@@ -505,8 +583,12 @@ export default function ClientsManagement() {
 
       <ClientFormModal
         isOpen={isFormModalOpen}
-        onClose={() => setIsFormModalOpen(false)}
-        onSave={handleAddClient}
+        onClose={() => {
+          setIsFormModalOpen(false);
+          setEditingClient(null);
+        }}
+        onSave={editingClient ? handleEditClient : handleAddClient}
+        client={editingClient}
       />
     </div>
   );
