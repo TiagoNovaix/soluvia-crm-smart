@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CrmLayout } from '@/components/crm/CrmLayout';
 import { mockGoal, Goal } from '@/types/goals';
 import { useToast } from "@/hooks/use-toast";
 
@@ -45,8 +44,7 @@ export default function GoalsSettingsPage() {
   };
 
   return (
-    <CrmLayout>
-      <div className="space-y-6">
+    <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -211,6 +209,5 @@ export default function GoalsSettingsPage() {
           </CardContent>
         </Card>
       </div>
-    </CrmLayout>
   );
 }
